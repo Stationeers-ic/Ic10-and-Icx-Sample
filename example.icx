@@ -1,0 +1,32 @@
+use aliases
+use constants
+use loop
+use comments
+#d0 -1924492105 #solar panel
+#d1 -1924492105 #solar panel
+#d2 -1924492105 #solar panel
+#d3 235638270 #console
+alias SolarSensor d0
+alias SolarPanel d1
+alias LedVertical d2
+alias LedHorizontal d3
+var SOLAR_HASH = d1.PrefabHash #-1924492105
+
+var verical = 180
+var horizontal = 180
+
+main:
+    updateLED()
+    setSolarPanels()
+    yield
+j main
+
+function setSolarPanels
+    d(SOLAR_HASH).Vertical = verical
+    d(SOLAR_HASH).Horizontal = horizontal
+end
+
+function updateLED
+    d2.Setting = verical
+    d3.Setting = horizontal
+end

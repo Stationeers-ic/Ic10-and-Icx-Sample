@@ -1,0 +1,28 @@
+alias SOLAR_HASH r0
+alias verical r1
+alias horizontal r2
+#d0 -1924492105 #solar panel
+#d1 -1924492105 #solar panel
+#d2 -1924492105 #solar panel
+#d3 235638270 #console
+alias SolarSensor d0
+alias SolarPanel d1
+alias LedVertical d2
+alias LedHorizontal d3
+l SOLAR_HASH d1 PrefabHash  #-1924492105
+move verical 180
+move horizontal 180
+main:
+jal updateLED
+jal setSolarPanels
+yield
+j main
+j 0
+setSolarPanels:
+sb SOLAR_HASH Vertical verical
+sb SOLAR_HASH Horizontal horizontal
+j ra
+updateLED:
+s d2 Setting verical
+s d3 Setting horizontal
+j ra
