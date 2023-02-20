@@ -1,32 +1,21 @@
 use aliases
-use constants
-use loop
-use comments
-#d0 -1924492105 #solar panel
-#d1 -1924492105 #solar panel
-#d2 -1924492105 #solar panel
-#d3 235638270 #console
-alias SolarSensor d0
-alias SolarPanel d1
-alias LedVertical d2
-alias LedHorizontal d3
-var SOLAR_HASH = d1.PrefabHash #-1924492105
+alias nighttime_memory d0
+alias east_daylight_sensor d1
+alias west_daylight_sensor d2
 
-var verical = 180
-var horizontal = 180
+var nighttime = db.Setting          # regular variable
 
-main:
-    updateLED()
-    setSolarPanels()
-    yield
-j main
+start:
+db.Setting = nighttime
+bdns d0 skip_to_yield
+nighttime_memory.Setting = nighttime
+skip_to_yield:
+yield
+var b #FIX Problem
+var a = east_daylight_sensor.Activate #FIX Problem
+seqz nighttime a
+a = west_daylight_sensor.Activate
+seqz b a
+and nighttime nighttime b
 
-function setSolarPanels
-    d(SOLAR_HASH).Vertical = verical
-    d(SOLAR_HASH).Horizontal = horizontal
-end
-
-function updateLED
-    d2.Setting = verical
-    d3.Setting = horizontal
-end
+j start
