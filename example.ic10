@@ -1,19 +1,6 @@
-alias nighttime r0
-alias b r1
-alias a r2
-alias nighttime_memory d0
-alias east_daylight_sensor d1
-alias west_daylight_sensor d2
-l nighttime db Setting
-start:
-s db Setting nighttime
-bdns d0 skip_to_yield
-s nighttime_memory Setting nighttime
-skip_to_yield:
-yield
-l a east_daylight_sensor Activate
-seqz nighttime a
-l a west_daylight_sensor Activate
-seqz b a
-and nighttime nighttime b
-j start
+alias rV2_gamma r11  
+
+define dhDish -2138748650
+
+lb r2 dhDish Horizontal 0
+mul r2 r0 deg2rad
