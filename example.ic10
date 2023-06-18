@@ -1,6 +1,0 @@
-alias rV2_gamma r11  
-
-define dhDish -2138748650
-
-lb r2 dhDish Horizontal 0
-mul r2 r0 deg2rad
